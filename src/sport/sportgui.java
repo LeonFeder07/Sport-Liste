@@ -50,7 +50,7 @@ public class sportgui {
                     textvorname.setText("");
                     textnachname.setText("");
                     textzeit.setText("");
-                    teilnehmerliste.next();
+
                 }
 
             }
