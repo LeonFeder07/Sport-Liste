@@ -25,21 +25,42 @@ public class sportgui {
             if(!textvorname.getText().equals(null) &&!textnachname.getText().equals(null) ) {
                 Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(),Double.valueOf(textzeit.getText()));
                 teilnehmerliste.append(pSchüler);
-                textvorname.setText("");
-                textnachname.setText("");
+
                 teilnehmerliste.toFirst();
                 textlist.setText(textvorname.getText()+" "+ textnachname.getText()+" "+textzeit.getText());
+                textvorname.setText("");
+                textnachname.setText("");
+                textzeit.setText("");
             }}
             if(!teilnehmerliste.isEmpty()){
             if(!textvorname.getText().equals(null) &&!textnachname.getText().equals(null) ) {
                 Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(),Double.valueOf(textzeit.getText()));
+                teilnehmerliste.toFirst();
+                while(pSchüler.getZeit()>teilnehmerliste.getContent().getZeit()){
+                    teilnehmerliste.next();
+                }
+                if(teilnehmerliste.hasAccess()){
+                if(pSchüler.getZeit()<=teilnehmerliste.getContent().getZeit()) {
+
+                    teilnehmerliste.insert(pschüler);
+                }else{
+                    teilnehmerliste.append(pSchüler);
+                }
+
+
+                }
                 teilnehmerliste.append(pSchüler);
                 textvorname.setText("");
                 textnachname.setText("");
+                textzeit.setText("");
                 teilnehmerliste.next();
         }}
             if(textlist.getText().equals(null)) {
-                textlist.setText(teilnehmerliste.getContent().getVorname() +" "+ teilnehmerliste.getContent().getNachname()+" "+teilnehmerliste.getContent().getZeit());
+                teilnehmerliste.toFirst();
+                while(teilnehmerliste.hasAccess()){
+                    textlist.setText(teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getVorname());
+                }
+                textlist.setText();
             }
             if(!textlist.getText().equals(null)) {
                 textlist.setText(textlist.getText()+"\n"+teilnehmerliste.getContent().getVorname() +" "+ teilnehmerliste.getContent().getNachname()+" "+teilnehmerliste.getContent().getZeit());
@@ -56,4 +77,40 @@ public class sportgui {
         frame.pack();
         frame.setVisible(true);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Leons Projekt 16.01.24
 }
