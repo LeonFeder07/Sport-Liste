@@ -22,12 +22,12 @@ public class sportgui {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(teilnehmerliste.isEmpty()){
-            if(!textvorname.getText().equals(null) &&!textnachname.getText().equals(null) ) {
+            if(!textvorname.getText().equals(null) &&!textnachname.getText().equals(null)  &&!textzeit.getText().equals(null)) {
                 Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(),Double.valueOf(textzeit.getText()));
                 teilnehmerliste.append(pSchüler);
 
                 teilnehmerliste.toFirst();
-                textlist.setText(textvorname.getText()+" "+ textnachname.getText()+" "+textzeit.getText());
+               // textlist.setText(textvorname.getText()+" "+ textnachname.getText()+" "+textzeit.getText());
                 textvorname.setText("");
                 textnachname.setText("");
                 textzeit.setText("");
@@ -44,7 +44,7 @@ public class sportgui {
 
                     teilnehmerliste.insert(pschüler);
                 }else{
-                    teilnehmerliste.append(pSchüler);
+                   // teilnehmerliste.append(pSchüler);
                 }
 
 
@@ -55,19 +55,25 @@ public class sportgui {
                 textzeit.setText("");
                 teilnehmerliste.next();
         }}
-            if(textlist.getText().equals(null)) {
-                teilnehmerliste.toFirst();
-                while(teilnehmerliste.hasAccess()){
-                    textlist.setText(teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getVorname());
-                }
-                textlist.setText();
-            }
-            if(!textlist.getText().equals(null)) {
-                textlist.setText(textlist.getText()+"\n"+teilnehmerliste.getContent().getVorname() +" "+ teilnehmerliste.getContent().getNachname()+" "+teilnehmerliste.getContent().getZeit());
-            }
+
+
+
+
         }
     });
-       
+
+        sortierenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textlist.setText("");
+                teilnehmerliste.toFirst();
+                while(teilnehmerliste.hasAccess()){
+                    System.out.println("\n"+teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getZeit() );
+                    teilnehmerliste.next();
+
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
