@@ -32,35 +32,32 @@ public class sportgui {
                 textnachname.setText("");
                 textzeit.setText("");
             }}
-            if(!teilnehmerliste.isEmpty()){
-            if(!textvorname.getText().equals(null) &&!textnachname.getText().equals(null) ) {
-                Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(),Double.valueOf(textzeit.getText()));
-                teilnehmerliste.toFirst();
-                while(pSchüler.getZeit()>teilnehmerliste.getContent().getZeit()){
+            if(!teilnehmerliste.isEmpty()) {
+                if (!textvorname.getText().equals(null) && !textnachname.getText().equals(null)) {
+                    Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(), Double.valueOf(textzeit.getText()));
+                    teilnehmerliste.toFirst();
+                    while (pSchüler.getZeit() > teilnehmerliste.getContent().getZeit()) {
+                        teilnehmerliste.next();
+                    }
+                    if (teilnehmerliste.hasAccess()) {
+                        teilnehmerliste.insert(pschüler);
+                    } else {
+                        teilnehmerliste.append(pschüler);
+
+
+                    }
+
+                    textvorname.setText("");
+                    textnachname.setText("");
+                    textzeit.setText("");
                     teilnehmerliste.next();
                 }
-                if(teilnehmerliste.hasAccess()){
-                if(pSchüler.getZeit()<=teilnehmerliste.getContent().getZeit()) {
 
-                    teilnehmerliste.insert(pschüler);
-                }else{
-                   // teilnehmerliste.append(pSchüler);
-                }
+            }
 
 
-                }
-                teilnehmerliste.append(pSchüler);
-                textvorname.setText("");
-                textnachname.setText("");
-                textzeit.setText("");
-                teilnehmerliste.next();
         }}
-
-
-
-
-        }
-    });
+    );
 
         sortierenButton.addActionListener(new ActionListener() {
             @Override
