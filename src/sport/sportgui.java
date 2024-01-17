@@ -13,7 +13,6 @@ public class sportgui {
     private JButton hinzufügenButton;
     private JTextArea textlist;
     private JTextField textzeit;
-    private JButton ausgebenButton;
 
 
     public sportgui() {
@@ -31,7 +30,14 @@ public class sportgui {
                 textvorname.setText("");
                 textnachname.setText("");
                 textzeit.setText("");
-            } else //if (!teilnehmerliste.isEmpty())
+                while(teilnehmerliste.hasAccess()){
+                    System.out.println(teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getZeit() );
+                    teilnehmerliste.next();}
+                System.out.println("\n");
+
+
+            }
+             else //if (!teilnehmerliste.isEmpty())
             {
                 Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(), Double.valueOf(textzeit.getText()));
                 teilnehmerliste.toFirst();
@@ -54,28 +60,21 @@ public class sportgui {
                 textnachname.setText("");
                 textzeit.setText("");
 
-
-
-
-            }
-
-
-
-        }}
-    );
-
-        ausgebenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textlist.setText("");
-
                 teilnehmerliste.toFirst();
                 while(teilnehmerliste.hasAccess()){
                     System.out.println(teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getZeit() );
-                    teilnehmerliste.next();
-                }
-            }
-        });
+                    teilnehmerliste.next();}
+                System.out.println("\n");
+
+
+            }}
+
+
+
+        }
+    );
+
+
     }
 
     public static void main(String[] args) {
