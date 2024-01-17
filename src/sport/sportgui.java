@@ -13,7 +13,7 @@ public class sportgui {
     private JButton hinzufügenButton;
     private JTextArea textlist;
     private JTextField textzeit;
-    private JButton sortierenButton;
+    private JButton ausgebenButton;
 
 
     public sportgui() {
@@ -64,7 +64,7 @@ public class sportgui {
         }}
     );
 
-        sortierenButton.addActionListener(new ActionListener() {
+        ausgebenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textlist.setText("");
