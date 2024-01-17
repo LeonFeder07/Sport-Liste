@@ -34,6 +34,7 @@ public class sportgui {
                     System.out.println(teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getZeit() );
                     teilnehmerliste.next();}
                 System.out.println("\n");
+                textlist.setText(pSchüler.getVorname()+", "+ pSchüler.getNachname()+", "+ pSchüler.getZeit());
 
 
             }
@@ -65,6 +66,7 @@ public class sportgui {
                     System.out.println(teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getZeit() );
                     teilnehmerliste.next();}
                 System.out.println("\n");
+                textlist.setText(pSchüler.getVorname()+", "+ pSchüler.getNachname()+", "+ pSchüler.getZeit());
 
 
             }}
