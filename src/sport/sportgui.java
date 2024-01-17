@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class sportgui {
-    Schüler pschüler;
+
     List <Schüler> teilnehmerliste;
     private JPanel label;
     private JTextField textvorname;
@@ -22,8 +22,8 @@ public class sportgui {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(teilnehmerliste.isEmpty()){
-            if(!textvorname.getText().equals(null) &&!textnachname.getText().equals(null)  &&!textzeit.getText().equals(null)) {
-                Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(),Double.valueOf(textzeit.getText()));
+
+                Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(), Double.valueOf(textzeit.getText()));
                 teilnehmerliste.append(pSchüler);
 
                 teilnehmerliste.toFirst();
@@ -31,29 +31,34 @@ public class sportgui {
                 textvorname.setText("");
                 textnachname.setText("");
                 textzeit.setText("");
-            }}
-            if(!teilnehmerliste.isEmpty()) {
-                if (!textvorname.getText().equals(null) && !textnachname.getText().equals(null)) {
-                    Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(), Double.valueOf(textzeit.getText()));
-                    teilnehmerliste.toFirst();
-                    while (pSchüler.getZeit() > teilnehmerliste.getContent().getZeit()) {
-                        teilnehmerliste.next();
-                    }
-                    if (teilnehmerliste.hasAccess()) {
-                        teilnehmerliste.insert(pschüler);
-                    } else {
-                        teilnehmerliste.append(pschüler);
+            } else //if (!teilnehmerliste.isEmpty())
+            {
+                Schüler pSchüler = new Schüler(textvorname.getText(), textnachname.getText(), Double.valueOf(textzeit.getText()));
+                teilnehmerliste.toFirst();
+                while (teilnehmerliste.hasAccess() && pSchüler.getZeit() > teilnehmerliste.getContent().getZeit()) {
+
+                    teilnehmerliste.next();
 
 
-                    }
+                }
+                if (teilnehmerliste.hasAccess()) {
+                    teilnehmerliste.insert(pSchüler);
 
-                    textvorname.setText("");
-                    textnachname.setText("");
-                    textzeit.setText("");
+                } else {
+                    teilnehmerliste.append(pSchüler);
+
 
                 }
 
+                textvorname.setText("");
+                textnachname.setText("");
+                textzeit.setText("");
+
+
+
+
             }
+
 
 
         }}
@@ -63,11 +68,11 @@ public class sportgui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textlist.setText("");
+
                 teilnehmerliste.toFirst();
                 while(teilnehmerliste.hasAccess()){
-                    System.out.println("\n"+teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getZeit() );
+                    System.out.println(teilnehmerliste.getContent().getVorname()+", "+teilnehmerliste.getContent().getNachname()+", "+teilnehmerliste.getContent().getZeit() );
                     teilnehmerliste.next();
-
                 }
             }
         });
