@@ -20,7 +20,8 @@ public class sportgui {
 
 
     public sportgui() {
-    teilnehmerliste = new List<Schüler>();
+        teilnehmerliste = new List<Schüler>();
+
     hinzufügenButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -107,7 +108,7 @@ public class sportgui {
                 if(!teilnehmerliste.isEmpty()){
                     teilnehmerliste.toFirst();
                     while (teilnehmerliste.hasAccess()){
-                        while (teilnehmerliste.getContent().getVorname()!=textvorname.getText()){
+                        while (teilnehmerliste.getContent().getVorname().equals(textvorname.getText())){
                             teilnehmerliste.next();
                         }
                         teilnehmerliste.remove();
@@ -118,19 +119,21 @@ public class sportgui {
         gibMirZeitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!teilnehmerliste.isEmpty()){
+                if (!teilnehmerliste.isEmpty()) {
                     teilnehmerliste.toFirst();
-                    while (teilnehmerliste.hasAccess()){
-                        while (teilnehmerliste.getContent().getVorname()!=textvorname.getText()){
+                    while (teilnehmerliste.hasAccess()) {
+                        while (teilnehmerliste.getContent().getVorname().equals(textvorname.getText()) ) {
                             teilnehmerliste.next();
                         }
-                       double lokalezeit1= teilnehmerliste.getContent().getZeit();
+                        double lokalezeit1 = teilnehmerliste.getContent().getZeit();
+                        textField1.setText(String.valueOf(lokalezeit1));
                     }
 
 
-            }
-        });
-        }}
+
+                }
+            }});
+        }
 
 
 
